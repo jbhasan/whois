@@ -1,0 +1,32 @@
+{
+    "name": "sayeed/whois",
+    "description": "Whois information of domain",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sayeed\\Whois\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hasan",
+            "email": "jbhasan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sayeed\\Whois\\WhoisServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
