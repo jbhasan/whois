@@ -4,6 +4,7 @@ namespace Sayeed\Whois;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Pdp\Rules;
 
 class Whois
 {
@@ -16,6 +17,7 @@ class Whois
     public static function lookup(string $domain)
     {
         try {
+			$domain = self::getRegisteredDomain($domain);
             $whois = shell_exec("whois " . escapeshellarg($domain));
 			$whois_ln = explode("\n", $whois);
 			$final_data = $data = [];
@@ -46,4 +48,9 @@ class Whois
             return 'Error performing whois lookup';
         }
     }
+	private static function getRegisteredDomain($domain) {
+		$publicSuffixList = Rules::fromPath('https://publicsuffix.org/list/public_suffix_list.dat');
+		$result = $publicSuffixList->resolve($domain);
+		return $result->registrableDomain()->toString();
+	}
 }
