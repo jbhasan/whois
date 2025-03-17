@@ -34,7 +34,7 @@ class Whois
 					}
 				}
 			}
-			$final_data['tld'] = $data['domain'];
+			$final_data['tld'] = $data['domain'] ?? '';
 			$final_data['domain'] = $data['Domain Name'];
 			$final_data['created'] = date('Y-m-d H:i:s', strtotime($data['Creation Date']));
 			$final_data['updated'] = date('Y-m-d H:i:s', strtotime($data['Updated Date']));
