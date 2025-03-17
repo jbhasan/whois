@@ -40,7 +40,7 @@ class Whois
 			$final_data['updated'] = date('Y-m-d H:i:s', strtotime($data['Updated Date']));
 			$final_data['expiry'] = date('Y-m-d H:i:s', strtotime($data['Registry Expiry Date']));
 			$final_data['registrar'] = $data['Registrar'];
-			$final_data['status'] = $data['status'];
+			$final_data['status'] = $data['status'] ?? 'ACTIVE';
 			$final_data['name_server'] = [$data['Name Server_1'], $data['Name Server_2']];
 			return $final_data;
         } catch (\Exception $e) {
